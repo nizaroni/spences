@@ -1,0 +1,11 @@
+{
+  "name": "spences",
+  "description": "An expenses tracker Web application for my project interview at Toptal.",
+  "version": "1.0.0",
+  "author": "Nizar Khalife Iglesias <khalifenizar@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@git.toptal.com:Nizar-Khalife-Iglesias/nizar-khalife-iglesias.git"
+  }
+}
