@@ -15,7 +15,7 @@
     "url": "git@git.toptal.com:Nizar-Khalife-Iglesias/nizar-khalife-iglesias.git"
   },
   "scripts": {
-    "start": "node web.js",
-    "dev": "nodemon web.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   }
 }
