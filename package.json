@@ -6,12 +6,16 @@
   "dependencies": {
     "hapi": "^7.1.0"
   },
+  "devDependencies": {
+    "nodemon": "^1.2.1"
+  },
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "git@git.toptal.com:Nizar-Khalife-Iglesias/nizar-khalife-iglesias.git"
   },
   "scripts": {
-    "start": "node web.js"
+    "start": "node web.js",
+    "dev": "nodemon web.js"
   }
 }
