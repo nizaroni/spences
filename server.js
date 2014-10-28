@@ -17,7 +17,7 @@ browserFiles.on('ready', function moonbootsReady () {
         path: '/' + browserFiles.jsFileName(),
         handler: function replyWithJs (request, reply) {
             browserFiles.jsSource(function sendJsSource (err, js) {
-                reply(js);
+                reply(js).header('Content-Type', 'application/javascript');
             });
         }
     });
