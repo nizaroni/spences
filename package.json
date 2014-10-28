@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "Nizar Khalife Iglesias <khalifenizar@gmail.com>",
   "dependencies": {
+    "ampersand-router": "^1.0.6",
     "domready": "^1.0.7",
     "hapi": "^7.1.0",
     "moonboots": "^3.0.0"
