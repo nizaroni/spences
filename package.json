@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "author": "Nizar Khalife Iglesias <khalifenizar@gmail.com>",
   "dependencies": {
-    "hapi": "^7.1.0"
+    "hapi": "^7.1.0",
+    "moonboots": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.2.1"
