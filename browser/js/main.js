@@ -3,6 +3,7 @@ var domready, router, spences;
 domready = require('domready');
 
 router = require('./router');
+body = require('../templates/body.dom');
 
 function Spences () {}
 
@@ -10,9 +11,7 @@ Spences.prototype.blastOff = function () {
     var self = this;
 
     domready(function initilizeView () {
-        var h1 = document.createElement('h1');
-        h1.textContent = 'Spences';
-        document.body.appendChild(h1);
+        document.body.appendChild(body());
 
         router.history.start({ pushState: true, root: '/' });
     });
