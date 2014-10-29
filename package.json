@@ -6,6 +6,7 @@
   "dependencies": {
     "ampersand-router": "^1.0.6",
     "domready": "^1.0.7",
+    "habitat": "^3.0.1",
     "hapi": "^7.1.0",
     "moonboots": "^3.0.0"
   },
