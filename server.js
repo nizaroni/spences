@@ -1,12 +1,14 @@
-var Moonboots, Hapi, browserFiles, server;
+var Moonboots, Hapi, env, browserFiles, server;
 
 Moonboots = require('moonboots');
 Hapi = require('hapi');
 
+env = require('./lib/env');
+
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
     jsFileName: 'spences',
-    developmentMode: true
+    developmentMode: env.get('isDev')
 });
 
 browserFiles.on('ready', function moonbootsReady () {
