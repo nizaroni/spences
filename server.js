@@ -8,7 +8,10 @@ env = require('./lib/env');
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
     jsFileName: 'spences',
-    developmentMode: env.get('isDev')
+    developmentMode: env.get('isDev'),
+    browserify: {
+        transforms: [ 'domthingify' ]
+    }
 });
 
 browserFiles.on('ready', function moonbootsReady () {

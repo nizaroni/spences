@@ -6,6 +6,8 @@
   "dependencies": {
     "ampersand-router": "^1.0.6",
     "domready": "^1.0.7",
+    "domthing": "^0.3.1",
+    "domthingify": "^0.2.0",
     "habitat": "^3.0.1",
     "hapi": "^7.1.0",
     "moonboots": "^3.0.0"
