@@ -13,6 +13,12 @@
   "devDependencies": {
     "nodemon": "^1.2.1"
   },
+  "environment": {
+    "IS_DEV": {
+      "description": "Boolean value that determines whether app components will run in development mode.",
+      "default": "false"
+    }
+  },
   "license": "ISC",
   "repository": {
     "type": "git",
