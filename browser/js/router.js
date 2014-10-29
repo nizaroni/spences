@@ -1,6 +1,8 @@
-var AmpersandRouter, SpencesRouter;
+var AmpersandRouter, home, SpencesRouter;
 
 AmpersandRouter = require('ampersand-router');
+
+home = require('../templates/pages/home.dom');
 
 SpencesRouter = AmpersandRouter.extend({
     routes: {
@@ -9,9 +11,7 @@ SpencesRouter = AmpersandRouter.extend({
     },
 
     home: function () {
-        var h2 = document.createElement('h2');
-        h2.textContent = 'Home page';
-        document.body.appendChild(h2);
+        document.body.appendChild(home());
 
         this.trigger('page', 'home');
     },
