@@ -1,6 +1,7 @@
-var AmpersandView, router, head, body, MainView;
+var AmpersandView, result, router, head, body, MainView;
 
 AmpersandView = require('ampersand-view');
+result = require('lodash.result');
 
 router = require('../router');
 head = require('../../templates/head.dom');
@@ -20,6 +21,8 @@ MainView = AmpersandView.extend({
             .queryByHook('page-container')
             .appendChild(pageView.el)
         ;
+
+        document.title = result(pageView, 'pageTitle') || 'Spences';
     },
 
     render: function () {

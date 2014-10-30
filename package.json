@@ -11,6 +11,7 @@
     "domthingify": "^0.2.0",
     "habitat": "^3.0.1",
     "hapi": "^7.1.0",
+    "lodash.result": "^2.4.1",
     "moonboots": "^3.0.0"
   },
   "devDependencies": {
