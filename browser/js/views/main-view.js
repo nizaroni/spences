@@ -1,5 +1,5 @@
 var AmpersandSwitcher, AmpersandView, result,
-    router, head, body,
+    navigate, router, head, body,
     MainView
 ;
 
@@ -7,12 +7,15 @@ AmpersandSwitcher = require('ampersand-view-switcher');
 AmpersandView = require('ampersand-view');
 result = require('lodash.result');
 
+navigate = require('../helpers/navigate');
 router = require('../router');
 head = require('../../templates/head.dom');
 body = require('../../templates/body.dom');
 
 MainView = AmpersandView.extend({
     template: body,
+
+    events: { 'click a[href]': 'navigateFromLinkEvent' },
 
     initialize: function () {
         this.listenTo(router, 'page', this.switchPageView);
@@ -38,6 +41,23 @@ MainView = AmpersandView.extend({
 
     switchPageView: function (pageView) {
         this.pageSwitcher.set(pageView);
+    },
+
+    navigateFromLinkEvent: function (event) {
+        var link, isSameOrigin, isModifiedByKeys;
+
+        link= event.target;
+        isSameOrigin = link.host === window.location.host;
+        isModifiedByKeys = event.ctrlKey
+            || event.shiftKey
+            || event.altKey
+            || event.metaKey
+        ;
+
+        if (isSameOrigin && !isModifiedByKeys) {
+            event.preventDefault();
+            navigate(link.pathname);
+        }
     }
 });
 
