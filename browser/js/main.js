@@ -1,9 +1,9 @@
-var domready, router, spences;
+var domready, MainView, router, spences;
 
 domready = require('domready');
 
+MainView = require('./views/main-view');
 router = require('./router');
-body = require('../templates/body.dom');
 
 function Spences () {}
 
@@ -11,7 +11,11 @@ Spences.prototype.blastOff = function () {
     var self = this;
 
     domready(function initilizeView () {
-        document.body.appendChild(body());
+        var mainView;
+
+        mainView = new MainView({ el: document.body });
+        mainView.render();
+        self.view = mainView;
 
         router.history.start({ pushState: true, root: '/' });
     });
