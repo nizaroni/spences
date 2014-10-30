@@ -1,6 +1,14 @@
 <div class="jumbotron text-center">
     <h1>Spences</h1>
     <p>An expenses tracker.</p>
-    <p><a href="#" role="button" class="btn btn-primary btn-lg">Sign up for free.</a></p>
-    <p><a href="#" role="button">Or log in.</a></p>
+    <p>
+        <a href="#" role="button" class="btn btn-primary btn-lg">
+            Sign up for free.
+        </a>
+    </p>
+    <p>
+        <a href="#" role="button">
+            Or log in.
+        </a>
+    </p>
 </div>
