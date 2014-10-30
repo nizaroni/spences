@@ -1,8 +1,9 @@
-var AmpersandView, router, body, MainView;
+var AmpersandView, router, head, body, MainView;
 
 AmpersandView = require('ampersand-view');
 
 router = require('../router');
+head = require('../../templates/head.dom');
 body = require('../../templates/body.dom');
 
 MainView = AmpersandView.extend({
@@ -19,6 +20,13 @@ MainView = AmpersandView.extend({
             .queryByHook('page-container')
             .appendChild(pageView.el)
         ;
+    },
+
+    render: function () {
+        document.head.appendChild(head());
+
+        this.renderWithTemplate(this);
+        return this;
     }
 });
 
