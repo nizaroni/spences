@@ -43,6 +43,14 @@ browserFiles.on('ready', function moonbootsReady () {
 
     server.route({
         method: 'GET',
+        path: '/bootstrap.css.map',
+        handler: {
+            file: __dirname + '/public/bootstrap.css.map'
+        }
+    });
+
+    server.route({
+        method: 'GET',
         path: '/{param*}',
         handler: function replyWithHtml (request, reply) {
             reply(browserFiles.htmlSource());
