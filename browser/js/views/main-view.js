@@ -18,10 +18,6 @@ MainView = AmpersandView.extend({
         this.listenTo(router, 'page', this.switchPageView);
     },
 
-    switchPageView: function (pageView) {
-        this.pageSwitcher.set(pageView);
-    },
-
     render: function () {
         var pageContainer;
 
@@ -38,6 +34,10 @@ MainView = AmpersandView.extend({
         });
 
         return this;
+    },
+
+    switchPageView: function (pageView) {
+        this.pageSwitcher.set(pageView);
     }
 });
 
