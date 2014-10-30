@@ -1,5 +1,9 @@
-var AmpersandView, result, router, head, body, MainView;
+var AmpersandSwitcher, AmpersandView, result,
+    router, head, body,
+    MainView
+;
 
+AmpersandSwitcher = require('ampersand-view-switcher');
 AmpersandView = require('ampersand-view');
 result = require('lodash.result');
 
@@ -15,20 +19,24 @@ MainView = AmpersandView.extend({
     },
 
     switchPageView: function (pageView) {
-        pageView.render();
-
-        this
-            .queryByHook('page-container')
-            .appendChild(pageView.el)
-        ;
-
-        document.title = result(pageView, 'pageTitle') || 'Spences';
+        this.pageSwitcher.set(pageView);
     },
 
     render: function () {
+        var pageContainer;
+
         document.head.appendChild(head());
 
         this.renderWithTemplate(this);
+
+        pageContainer = this.queryByHook('page-container');
+        this.pageSwitcher = new AmpersandSwitcher(pageContainer, {
+            show: function (newPage, oldPage) {
+                document.title = result(newPage, 'pageTitle') || 'Spences';
+                document.scrollTop = 0;
+            }
+        });
+
         return this;
     }
 });
