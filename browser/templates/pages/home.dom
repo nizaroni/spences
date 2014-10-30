@@ -2,7 +2,7 @@
     <h1>Spences</h1>
     <p>An expenses tracker.</p>
     <p>
-        <a href="#" role="button" class="btn btn-primary btn-lg">
+        <a href="/signup" role="button" class="btn btn-primary btn-lg">
             Sign up for free.
         </a>
     </p>
