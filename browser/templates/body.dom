@@ -1,3 +1,5 @@
 <body>
     <h1>Spences</h1>
+
+    <main data-hook="page-container"></main>
 </body>
