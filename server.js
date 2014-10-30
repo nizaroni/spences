@@ -8,6 +8,10 @@ env = require('./lib/env');
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
     jsFileName: 'spences',
+    cssFileName: 'spences',
+    stylesheets: [
+        __dirname + '/browser/css/bootstrap.css'
+    ],
     developmentMode: env.get('isDev'),
     browserify: {
         transforms: [ 'domthingify' ]
@@ -23,6 +27,16 @@ browserFiles.on('ready', function moonbootsReady () {
         handler: function replyWithJs (request, reply) {
             browserFiles.jsSource(function sendJsSource (err, js) {
                 reply(js).header('Content-Type', 'application/javascript');
+            });
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/' + browserFiles.cssFileName(),
+        handler: function replyWithCss (request, reply) {
+            browserFiles.cssSource(function sendCssSource (err, css) {
+                reply(css).header('Content-Type', 'text/css');
             });
         }
     });
