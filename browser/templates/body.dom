@@ -1,5 +1,13 @@
 <body>
-    <h1>Spences</h1>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Spences</a>
+            </div>
+        </div>
+    </nav>
 
-    <main data-hook="page-container"></main>
+    <div class="container-fluid">
+        <main data-hook="page-container"></main>
+    </div>
 </body>
