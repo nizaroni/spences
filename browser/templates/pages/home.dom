@@ -1,1 +1,6 @@
-<h2>Home Page</h2>
+<div class="jumbotron text-center">
+    <h1>Spences</h1>
+    <p>An expenses tracker.</p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign up for free</a></p>
+    <p><a href="#" role="button">Or log in</a></p>
+</div>
