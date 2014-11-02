@@ -1,6 +1,8 @@
 <section class="page signup">
     <h1>Create a Spences account</h1>
 
-    <form data-hook="signup-form" role="form"></form>
+    <form data-hook="signup-form" role="form">
+        <fieldset data-hook="field-container"></fieldset>
+    </form>
 </section>
 
