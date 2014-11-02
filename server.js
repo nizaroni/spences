@@ -1,8 +1,9 @@
-var Moonboots, Hapi, env, browserFiles, server;
+var Moonboots, Hapi, api, env, browserFiles, server;
 
 Moonboots = require('moonboots');
 Hapi = require('hapi');
 
+api = require('./handlers/api-handlers');
 env = require('./lib/env');
 
 browserFiles = new Moonboots({
@@ -47,6 +48,12 @@ browserFiles.on('ready', function moonbootsReady () {
         handler: {
             file: __dirname + '/public/bootstrap.css.map'
         }
+    });
+
+    server.route({
+        method: 'POST',
+        path: '/api/users',
+        handler: api.signup
     });
 
     server.route({
