@@ -8,6 +8,8 @@ InputView = AmpersandInputView.extend({
     template: formInput,
 
     initialize: function (options) {
+        this.constructor.__super__.initialize.apply(this, arguments);
+
         this.sizeClassLabel = '';
         this.sizeClassInput = '';
 
