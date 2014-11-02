@@ -17,7 +17,55 @@ InputView = AmpersandInputView.extend({
             this.sizeClassLabel = 'h4';
             this.sizeClassInput = 'input-lg';
         }
-    }
+    },
+
+    props: {
+        validClass: ['string', true, 'has-success'],
+        invalidClass: ['string', true, 'has-error']
+    },
+
+    bindings: {
+        'name': {
+            type: 'attribute',
+            selector: 'input, textarea',
+            name: 'name'
+        },
+        'label': [
+            {
+                hook: 'label'
+            },
+            {
+                type: 'toggle',
+                hook: 'label'
+            }
+        ],
+        'message': {
+            type: 'text',
+            hook: 'message-text'
+        },
+        'showMessage': {
+            type: 'toggle',
+            hook: 'message-container'
+        },
+        'placeholder': {
+            type: 'attribute',
+            selector: 'input, textarea',
+            name: 'placeholder'
+        },
+        'validityClass': [
+            {
+                type: 'class',
+                selector: 'input, textarea'
+            }, {
+                type: 'class',
+                hook: 'validity-class'
+            }
+        ],
+        'rootElementClass': {
+            type: 'class',
+            selector: ''
+        }
+    },
 
 });
 

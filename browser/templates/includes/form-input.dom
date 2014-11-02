@@ -1,4 +1,4 @@
-<div class="form-group">
+<div data-hook="validity-class" class="form-group">
     <label data-hook="label" class="control-label {{ sizeClassLabel }}"></label>
     <div data-hook="message-container">
         <div class="alert alert-danger" data-hook="message-text"></div>
