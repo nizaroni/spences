@@ -51,6 +51,14 @@ browserFiles.on('ready', function moonbootsReady () {
 
     server.route({
         method: 'GET',
+        path: '/api/{param*}',
+        handler: function replyWithNotFoundJson (request, reply) {
+            reply({ statusCode: 404, error: 'Not Found' }).code(404);
+        }
+    });
+
+    server.route({
+        method: 'GET',
         path: '/{param*}',
         handler: function replyWithHtml (request, reply) {
             reply(browserFiles.htmlSource());
