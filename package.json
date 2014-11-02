@@ -19,7 +19,9 @@
     "moonboots": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.2.1"
+    "faucet": "0.0.1",
+    "nodemon": "^1.2.1",
+    "tape": "^3.0.1"
   },
   "environment": {
     "IS_DEV": {
@@ -34,6 +36,8 @@
   },
   "scripts": {
     "start": "node server.js",
+    "test": "tape test/*/*.js",
+    "test-pretty": "tape test/*/*.js | faucet",
     "dev": "nodemon server.js"
   }
 }
