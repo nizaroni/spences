@@ -3,6 +3,10 @@
 
     <form data-hook="signup-form" role="form">
         <fieldset data-hook="field-container"></fieldset>
+
+        <button data-hook="reset" type="submit" class="btn btn-lg btn-primary">
+            Create new account
+        </button>
     </form>
 </section>
 
