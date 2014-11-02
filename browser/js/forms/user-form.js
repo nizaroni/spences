@@ -11,6 +11,7 @@ UserForm = AmpersandFormView.extend({
                 label: 'Name',
                 name: 'name',
                 placeholder: 'e.g., Alfred Pennyworth',
+                requiredMessage: 'Please tell us your name.',
                 size: 'large',
                 parent: this
             }),
@@ -18,6 +19,7 @@ UserForm = AmpersandFormView.extend({
                 label: 'Email',
                 name: 'email',
                 placeholder: 'e.g., alfred@batmail.com',
+                requiredMessage: 'Please tell us your email.',
                 size: 'large',
                 parent: this
             }),
@@ -25,6 +27,7 @@ UserForm = AmpersandFormView.extend({
                 label: 'Password',
                 name: 'password',
                 type: 'password',
+                requiredMessage: 'Secure your account with a password.',
                 placeholder: 'e.g., ************************',
                 size: 'large',
                 parent: this
