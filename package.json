@@ -15,6 +15,7 @@
     "domthingify": "^0.2.0",
     "habitat": "^3.0.1",
     "hapi": "^7.1.0",
+    "hapi-jwt": "^1.0.2",
     "hashy": "^0.4.1",
     "jsonwebtoken": "^1.1.2",
     "lodash.result": "^2.4.1",

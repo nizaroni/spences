@@ -1,8 +1,10 @@
-var Moonboots, Hapi, api, env, server, browserFiles;
+var Moonboots, HapiJwt, Hapi, validateToken, api, env, server, browserFiles;
 
 Moonboots = require('moonboots');
+HapiJwt = require('hapi-jwt');
 Hapi = require('hapi');
 
+validateToken = require('./handlers/validate-token');
 api = require('./handlers/api-handlers');
 env = require('./lib/env');
 
@@ -26,6 +28,21 @@ server.route({
     handler: function replyWithNotFoundJson (request, reply) {
         reply({ statusCode: 404, error: 'Not Found' }).code(404);
     }
+});
+
+server.pack.register(HapiJwt, function (err) {
+    var options;
+
+    if (err) {
+        throw err;
+    }
+
+    options = {
+        secret: env.get('jwtSecret'),
+        validateFunc: validateToken
+    };
+
+    server.auth.strategy('jwt', 'bearer-access-token', options);
 });
 
 browserFiles = new Moonboots({
