@@ -50,6 +50,13 @@ server.pack.register(HapiJwt, function (err) {
         handler: api.loginToken,
         config: { auth: 'jwt' }
     });
+
+    server.route({
+        method: 'POST',
+        path: '/api/expenses',
+        handler: api.expenseAdd,
+        config: { auth: 'jwt' }
+    });
 });
 
 browserFiles = new Moonboots({
