@@ -3,5 +3,10 @@
     <div data-hook="message-container">
         <div class="alert alert-danger" data-hook="message-text"></div>
     </div>
-    <input class="form-control {{ sizeClassInput }}">
+
+    {{#if isTextArea }}
+        <textarea class="form-control {{ sizeClassInput }}" rows="{{ sizeRows }}"></textarea>
+    {{#else }}
+        <input class="form-control {{ sizeClassInput }}">
+    {{/if}}
 </div>

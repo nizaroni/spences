@@ -12,10 +12,16 @@ InputView = AmpersandInputView.extend({
 
         this.sizeClassLabel = '';
         this.sizeClassInput = '';
+        this.sizeRows = 2;
 
         if (options.size === 'large') {
             this.sizeClassLabel = 'h4';
             this.sizeClassInput = 'input-lg';
+            this.sizeRows = 4;
+        }
+
+        if (options.isTextArea) {
+            this.isTextArea = true;
         }
     },
 
