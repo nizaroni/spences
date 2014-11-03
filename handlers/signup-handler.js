@@ -1,4 +1,4 @@
-var hashy, userFetchOrCreate;
+var hashy, userFetchOrCreate, jwtSign;
 
 hashy = require('hashy');
 
