@@ -5,7 +5,7 @@ test = require('tape');
 
 userNewId = require('../../lib/user-new-id');
 prefix = require('../../lib/redis-key-prefix');
-db = require('../../lib/db')
+db = require('../../lib/db');
 
 test('userNewId() test', function (t) {
     function resetIds (callback) {
