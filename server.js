@@ -52,6 +52,13 @@ server.pack.register(HapiJwt, function (err) {
     });
 
     server.route({
+        method: 'GET',
+        path: '/api/expenses',
+        handler: api.expenses,
+        config: { auth: 'jwt' }
+    });
+
+    server.route({
         method: 'POST',
         path: '/api/expenses',
         handler: api.expenseAdd,
