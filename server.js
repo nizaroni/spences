@@ -1,10 +1,12 @@
-var Moonboots, Hapi, api, env, browserFiles, server;
+var Moonboots, Hapi, api, env, server, browserFiles;
 
 Moonboots = require('moonboots');
 Hapi = require('hapi');
 
 api = require('./handlers/api-handlers');
 env = require('./lib/env');
+
+server = new Hapi.Server(8000);
 
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
@@ -20,8 +22,6 @@ browserFiles = new Moonboots({
 });
 
 browserFiles.on('ready', function moonbootsReady () {
-    server = new Hapi.Server(8000);
-
     server.route({
         method: 'GET',
         path: '/' + browserFiles.jsFileName(),
@@ -76,3 +76,5 @@ browserFiles.on('ready', function moonbootsReady () {
         console.log('\nServer running at:', server.info.uri);
     });
 });
+
+module.exports = server;
