@@ -1,4 +1,4 @@
-var auto, test, jwt, staggerResult, userCreate, userKey, server, db;
+var auto, test, jwt, staggerResult, userCreate, userKey, server, env, db;
 
 auto = require('run-auto');
 test = require('tape');
@@ -8,6 +8,7 @@ staggerResult = require('../stagger-result');
 userCreate = require('../../lib/user-create');
 userKey = require('../../lib/user-key');
 server = require('../../server');
+env = require('../../lib/env');
 db = require('../../lib/db');
 
 test('/api/login POST test', function apiUsersPostTest (t) {
@@ -62,11 +63,8 @@ test('/api/login POST test', function apiUsersPostTest (t) {
     tasks.verifyIdWithEmail = ['successfulLogin', function verifyIdWithEmail (callback, results) {
         db.hget(userKey(results.successfulLogin.result.id), 'email', callback);
     }];
-    tasks.fetchPasswordHash = ['create', function fetchPasswordHash (callback, results) {
-        db.hget(userKey(gordon.email), 'passwordHash', callback);
-    }];
-    tasks.verifyToken = ['successfulLogin', 'fetchPasswordHash', function verifyToken (callback, results) {
-        jwt.verify(results.successfulLogin.result.token, results.fetchPasswordHash, { issuer: 'spences-test' }, staggerResult(callback));
+    tasks.verifyToken = ['successfulLogin', function verifyToken (callback, results) {
+        jwt.verify(results.successfulLogin.result.token, env.get('jwtSecret'), { issuer: 'spences-test' }, staggerResult(callback));
     }];
 
     auto(tasks, function performTests (err, results) {

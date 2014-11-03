@@ -1,4 +1,4 @@
-var auto, test, jwt, staggerResult, userKey, server, db;
+var auto, test, jwt, staggerResult, userKey, server, env, db;
 
 auto = require('run-auto');
 test = require('tape');
@@ -7,6 +7,7 @@ jwt = require('jsonwebtoken');
 staggerResult = require('../stagger-result');
 userKey = require('../../lib/user-key');
 server = require('../../server');
+env = require('../../lib/env');
 db = require('../../lib/db');
 
 test('/api/users POST test', function apiUsersPostTest (t) {
@@ -55,14 +56,11 @@ test('/api/users POST test', function apiUsersPostTest (t) {
     tasks.confirmIdEmail = ['create', function confirmIdEmail (callback, results) {
         db.hget(userKey(results.create.result.id), 'email', callback);
     }];
-    tasks.fetchPasswordHash = ['create', function fetchPasswordHash (callback, results) {
-        db.hget(userKey(robin.email), 'passwordHash', callback);
+    tasks.verifyCreateToken = ['create', function verifyCreateToken (callback, results) {
+        jwt.verify(results.create.result.token, env.get('jwtSecret'), jwtOptions, staggerResult(callback));
     }];
-    tasks.verifyCreateToken = ['create', 'fetchPasswordHash', function verifyCreateToken (callback, results) {
-        jwt.verify(results.create.result.token, results.fetchPasswordHash, jwtOptions, staggerResult(callback));
-    }];
-    tasks.verifyFetchToken = ['fetch', 'fetchPasswordHash', function verifyFetchToken (callback, results) {
-        jwt.verify(results.fetch.result.token, results.fetchPasswordHash, jwtOptions, staggerResult(callback));
+    tasks.verifyFetchToken = ['fetch', function verifyFetchToken (callback, results) {
+        jwt.verify(results.fetch.result.token, env.get('jwtSecret'), jwtOptions, staggerResult(callback));
     }];
 
     auto(tasks, function performTests (err, results) {
