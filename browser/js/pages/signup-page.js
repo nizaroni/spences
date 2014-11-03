@@ -1,4 +1,4 @@
-var AmpersandView, UserForm, MeModel, signUp, SignUpPage;
+var AmpersandView, store, UserForm, MeModel, signUp, SignUpPage;
 
 AmpersandView = require('ampersand-view');
 store = require('store');
