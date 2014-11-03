@@ -54,8 +54,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "REDIS_KEY_PREFIX=test tape test/*/test-*.js",
-    "test-pretty": "REDIS_KEY_PREFIX=test tape test/*/test-*.js | faucet",
+    "test": "NODE_ENV=test tape test/*/test-*.js",
+    "test-pretty": "NODE_ENV=test tape test/*/test-*.js | faucet",
     "dev": "nodemon server.js"
   }
 }
