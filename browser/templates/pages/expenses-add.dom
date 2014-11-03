@@ -1,0 +1,11 @@
+<section class="page expenses-add">
+    <h1>Add an expense</h1>
+
+    <form data-hook="expense-form" role="form">
+        <fieldset data-hook="field-container"></fieldset>
+
+        <button data-hook="reset" type="submit" class="btn btn-lg btn-primary">
+            Add this expense
+        </button>
+    </form>
+</section>

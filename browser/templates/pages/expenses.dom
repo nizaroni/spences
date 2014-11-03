@@ -3,7 +3,7 @@
 
     <p class="lead">It looks like you haven't added any expenses yet.</p>
 
-    <a href="#" class="btn btn-lg btn-primary">
+    <a href="/expenses/add" class="btn btn-lg btn-primary">
         Add your first expense
     </a>
 </section>
