@@ -12,6 +12,8 @@ ExpensesAddPage = AmpersandView.extend({
 
     template: expensesAdd,
 
+    authOnly: true,
+
     subviews: {
         form: {
             hook: 'expense-form',
