@@ -43,6 +43,13 @@ server.pack.register(HapiJwt, function (err) {
     };
 
     server.auth.strategy('jwt', 'bearer-access-token', options);
+
+    server.route({
+        method: 'GET',
+        path: '/api/login',
+        handler: api.loginToken,
+        config: { auth: 'jwt' }
+    });
 });
 
 browserFiles = new Moonboots({
