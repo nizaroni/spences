@@ -36,7 +36,9 @@ LoginPage = AmpersandView.extend({
                             success: function (token, response) {
                                 var newMe;
 
-                                newMe = new MeModel(response.body);
+                                response.email = formData.email;
+
+                                newMe = new MeModel(response);
                                 me(newMe);
                                 store.set('token', newMe.token);
                                 spences.navigate('expenses');
