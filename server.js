@@ -8,6 +8,26 @@ env = require('./lib/env');
 
 server = new Hapi.Server(env.get('port') || 8000);
 
+server.route({
+    method: 'POST',
+    path: '/api/users',
+    handler: api.signup
+});
+
+server.route({
+    method: 'POST',
+    path: '/api/login',
+    handler: api.login
+});
+
+server.route({
+    method: 'GET',
+    path: '/api/{param*}',
+    handler: function replyWithNotFoundJson (request, reply) {
+        reply({ statusCode: 404, error: 'Not Found' }).code(404);
+    }
+});
+
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
     jsFileName: 'spences',
@@ -47,26 +67,6 @@ browserFiles.on('ready', function moonbootsReady () {
         path: '/bootstrap.css.map',
         handler: {
             file: __dirname + '/public/bootstrap.css.map'
-        }
-    });
-
-    server.route({
-        method: 'POST',
-        path: '/api/users',
-        handler: api.signup
-    });
-
-    server.route({
-        method: 'POST',
-        path: '/api/login',
-        handler: api.login
-    });
-
-    server.route({
-        method: 'GET',
-        path: '/api/{param*}',
-        handler: function replyWithNotFoundJson (request, reply) {
-            reply({ statusCode: 404, error: 'Not Found' }).code(404);
         }
     });
 
