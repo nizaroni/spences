@@ -1,7 +1,8 @@
-var domready, MainView, router, spences;
+var domready, navigate, MainView, router, spences;
 
 domready = require('domready');
 
+navigate = require('./helpers/navigate');
 MainView = require('./views/main-view');
 router = require('./router');
 
@@ -19,6 +20,10 @@ Spences.prototype.blastOff = function () {
 
         router.history.start({ pushState: true, root: '/' });
     });
+};
+
+Spences.prototype.navigate = function (route) {
+    navigate(route);
 };
 
 spences = new Spences();
