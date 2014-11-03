@@ -38,6 +38,10 @@
       "description": "Prefix to use on Redis keys. Useful for testing.",
       "default": ""
     },
+    "PORT": {
+      "description": "Port for server to listen on. Defaults to `8000` automatically.",
+      "example": "8080"
+    },
     "IS_DEV": {
       "description": "Boolean value that determines whether app components will run in development mode.",
       "default": "false"

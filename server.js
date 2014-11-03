@@ -6,7 +6,7 @@ Hapi = require('hapi');
 api = require('./handlers/api-handlers');
 env = require('./lib/env');
 
-server = new Hapi.Server(8000);
+server = new Hapi.Server(env.get('port') || 8000);
 
 browserFiles = new Moonboots({
     main: __dirname + '/browser/js/main.js',
