@@ -1,4 +1,4 @@
-var auto, test, jwt, userKey, server, db;
+var auto, test, jwt, staggerResult, userKey, server, db;
 
 auto = require('run-auto');
 test = require('tape');
