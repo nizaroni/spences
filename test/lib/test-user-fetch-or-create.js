@@ -48,8 +48,13 @@ test('userFetchOrCreate() test', function (t) {
 
         t.equal(results.create.name, originalName);
         t.equal(results.create.email, batman.email);
-        t.deepEqual(results.fetch, results.create);
-        t.deepEqual(results.fetchFromRedis, results.create);
+        t.ok(results.create.isNew);
+        t.equal(results.fetch.id, results.create.id);
+        t.equal(results.fetch.name, results.create.name);
+        t.equal(results.fetch.email, results.create.email);
+        t.equal(results.fetch.passwordHash, results.create.passwordHash);
+        t.notOk(results.fetch.isNew);
+        t.deepEqual(results.fetch, results.fetchFromRedis);
 
         t.end();
     });
