@@ -16,7 +16,8 @@
     "habitat": "^3.0.1",
     "hapi": "^7.1.0",
     "lodash.result": "^2.4.1",
-    "moonboots": "^3.0.0"
+    "moonboots": "^3.0.0",
+    "redis": "^0.12.1"
   },
   "devDependencies": {
     "faucet": "0.0.1",
@@ -27,6 +28,11 @@
     "IS_DEV": {
       "description": "Boolean value that determines whether app components will run in development mode.",
       "default": "false"
+    },
+    "REDIS_URL": {
+      "description": "Connection string to a Redis database.",
+      "default": "redis://localhost:6379",
+      "required": true
     },
     "REDIS_KEY_PREFIX": {
       "description": "Prefix to use on Redis keys. Useful for testing.",
