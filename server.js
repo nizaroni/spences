@@ -57,6 +57,12 @@ browserFiles.on('ready', function moonbootsReady () {
     });
 
     server.route({
+        method: 'POST',
+        path: '/api/login',
+        handler: api.login
+    });
+
+    server.route({
         method: 'GET',
         path: '/api/{param*}',
         handler: function replyWithNotFoundJson (request, reply) {
