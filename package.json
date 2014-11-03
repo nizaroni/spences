@@ -20,6 +20,7 @@
     "hashy": "^0.4.1",
     "jsonwebtoken": "^1.1.2",
     "lodash.result": "^2.4.1",
+    "moment": "^2.8.3",
     "moonboots": "^3.0.0",
     "redis": "^0.12.1",
     "run-parallel": "^1.0.0",

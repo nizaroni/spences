@@ -1,7 +1,9 @@
-var AmpersandView, expensesAdd, ExpenseForm, ExpensesAddPage;
+var AmpersandView, moment, expensesCollection, expensesAdd, ExpenseForm, ExpensesAddPage;
 
 AmpersandView = require('ampersand-view');
+moment = require('moment');
 
+expensesCollection = require('../models/expenses-collection');
 expensesAdd = require('../../templates/pages/expenses-add.dom');
 ExpenseForm = require('../forms/expense-form');
 
@@ -18,8 +20,27 @@ ExpensesAddPage = AmpersandView.extend({
 
                 expenseForm = new ExpenseForm({
                     el: el,
-                    submitCallback: function () {
-                        console.log('Submit!');
+                    submitCallback: function (formData) {
+                        var time;
+
+                        time = moment.duration(formData.time);
+
+                        formData.amount = formData.amount * 100;
+                        formData.datetime = moment(formData.date)
+                            .add(time)
+                            .toDate()
+                        ;
+
+                        expensesCollection.create(formData, {
+                            wait: true,
+                            error: function () {
+                                console.error('Server error. Show feedback.');
+                            },
+                            success: function (expense, response) {
+                                spences.navigate('expenses');
+                                expensesCollection.fetch();
+                            }
+                        })
                     }
                 });
 
