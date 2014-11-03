@@ -28,12 +28,23 @@ ExpenseForm = AmpersandFormView.extend({
             new InputView({
                 label: 'Amount',
                 name: 'amount',
-                type: 'number',
-                placeholder: 'e.g., 32.50',
+                placeholder: 'e.g., $32.50',
                 requiredMessage: 'Please enter the amount of the expense.',
                 value: this.model && this.model.amount || '',
                 size: 'large',
-                parent: this
+                parent: this,
+                tests: [
+                    function validatePositive (val) {
+                        if (!+val || +val < 0) {
+                            return 'Please enter an amount greater than zero.';
+                        }
+                    },
+                    function validateMoneyFormat (val) {
+                        if (!/^\$?[0-9]+(\.[0-9]{2})?$/.test(val)) {
+                            return 'Please enter a valid amount of money.';
+                        }
+                    }
+                ]
             }),
             new InputView({
                 label: 'Description',
