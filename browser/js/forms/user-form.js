@@ -1,4 +1,4 @@
-var InputView, UserForm;
+var AmpersandFormView, InputView, UserForm;
 
 AmpersandFormView = require('ampersand-form-view');
 
