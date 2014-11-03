@@ -15,13 +15,16 @@
     "domthingify": "^0.2.0",
     "habitat": "^3.0.1",
     "hapi": "^7.1.0",
+    "hashy": "^0.4.1",
     "lodash.result": "^2.4.1",
     "moonboots": "^3.0.0",
-    "redis": "^0.12.1"
+    "redis": "^0.12.1",
+    "run-parallel": "^1.0.0"
   },
   "devDependencies": {
     "faucet": "0.0.1",
     "nodemon": "^1.2.1",
+    "run-auto": "^1.0.0",
     "run-series": "^1.0.2",
     "tape": "^3.0.1"
   },
