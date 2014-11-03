@@ -1,0 +1,12 @@
+<section class="page login">
+    <h1>Log in to Spences</h1>
+
+    <form data-hook="login-form" role="form">
+        <fieldset data-hook="field-container"></fieldset>
+
+        <button data-hook="reset" type="submit" class="btn btn-lg btn-primary">
+            Log in
+        </button>
+    </form>
+</section>
+

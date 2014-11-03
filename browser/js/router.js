@@ -4,12 +4,14 @@ AmpersandRouter = require('ampersand-router');
 
 HomePage = require('./pages/home-page');
 SignUpPage = require('./pages/signup-page');
+LoginPage = require('./pages/login-page');
 ExpensesPage = require('./pages/expenses-page');
 
 SpencesRouter = AmpersandRouter.extend({
     routes: {
         '': 'home',
         'signup': 'signup',
+        'login': 'login',
         'expenses': 'expenses',
         '(*path)': 'catchAll'
     },
@@ -22,6 +24,11 @@ SpencesRouter = AmpersandRouter.extend({
     signup: function () {
         var signUpPage = new SignUpPage();
         this.trigger('page', signUpPage);
+    },
+
+    login: function () {
+        var loginPage = new LoginPage();
+        this.trigger('page', loginPage);
     },
 
     expenses: function () {
