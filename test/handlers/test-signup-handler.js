@@ -1,15 +1,16 @@
-var auto, test, userKey, server, db;
+var auto, test, jwt, userKey, server, db;
 
 auto = require('run-auto');
 test = require('tape');
+jwt = require('jsonwebtoken');
 
 staggerResult = require('../stagger-result');
 userKey = require('../../lib/user-key');
 server = require('../../server');
 db = require('../../lib/db');
 
-test('/api/users test', function (t) {
-    var robin, tasks, request;
+test('/api/users POST test', function apiUsersPostTest (t) {
+    var robin, request, jwtOptions, tasks;
 
     robin = {
         name: 'Damian Wayne',
@@ -22,6 +23,8 @@ test('/api/users test', function (t) {
         url: '/api/users',
         payload: JSON.stringify(robin)
     };
+
+    jwtOptions = { issuer: 'spences-test' };
 
     tasks = {};
     tasks.fetchId = function fetchId (callback) {
@@ -52,8 +55,17 @@ test('/api/users test', function (t) {
     tasks.confirmIdEmail = ['create', function confirmIdEmail (callback, results) {
         db.hget(userKey(results.create.result.id), 'email', callback);
     }];
+    tasks.fetchPasswordHash = ['create', function fetchPasswordHash (callback, results) {
+        db.hget(userKey(robin.email), 'passwordHash', callback);
+    }];
+    tasks.verifyCreateToken = ['create', 'fetchPasswordHash', function verifyCreateToken (callback, results) {
+        jwt.verify(results.create.result.token, results.fetchPasswordHash, jwtOptions, staggerResult(callback));
+    }];
+    tasks.verifyFetchToken = ['fetch', 'fetchPasswordHash', function verifyFetchToken (callback, results) {
+        jwt.verify(results.fetch.result.token, results.fetchPasswordHash, jwtOptions, staggerResult(callback));
+    }];
 
-    auto(tasks, function (err, results) {
+    auto(tasks, function performTests (err, results) {
         if (err) {
             throw err;
         }
@@ -80,6 +92,9 @@ test('/api/users test', function (t) {
         t.notOk(results.badPassword.result.token);
 
         t.equal(results.confirmIdEmail, robin.email, 'Returned Id should have correct email.');
+
+        t.error(results.verifyCreateToken);
+        t.error(results.verifyFetchToken);
 
         server.stop();
         t.end();
