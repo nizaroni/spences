@@ -12,15 +12,11 @@ test('userNewId() test', function (t) {
         db.set(prefix() + 'state:user:ids', 0, callback);
     }
 
-    function newId (callback) {
-        userNewId(callback)
-    }
-
     function deliverKey (callback) {
         db.get(prefix() + 'state:user:ids', callback);
     }
 
-    var tasks = [ resetIds, newId, deliverKey, newId, deliverKey ];
+    var tasks = [ resetIds, userNewId, deliverKey, userNewId, deliverKey ];
 
     series(tasks, function (err, results) {
         if (err) {
