@@ -29,10 +29,6 @@
     "tape": "^3.0.1"
   },
   "environment": {
-    "IS_DEV": {
-      "description": "Boolean value that determines whether app components will run in development mode.",
-      "default": "false"
-    },
     "REDIS_URL": {
       "description": "Connection string to a Redis database.",
       "default": "redis://localhost:6379",
@@ -41,6 +37,10 @@
     "REDIS_KEY_PREFIX": {
       "description": "Prefix to use on Redis keys. Useful for testing.",
       "default": ""
+    },
+    "IS_DEV": {
+      "description": "Boolean value that determines whether app components will run in development mode.",
+      "default": "false"
     }
   },
   "license": "ISC",
