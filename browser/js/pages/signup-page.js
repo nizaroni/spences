@@ -1,10 +1,12 @@
-var AmpersandView, UserForm, signUp, SignUpPage;
+var AmpersandView, UserForm, MeModel, signUp, SignUpPage;
 
 AmpersandView = require('ampersand-view');
+store = require('store');
 
 UserForm = require('../forms/user-form');
-signUp = require('../../templates/pages/signup.dom');
 MeModel = require('../models/me-model');
+signUp = require('../../templates/pages/signup.dom');
+me = require('../helpers/me');
 
 SignUpPage = AmpersandView.extend({
     pageTitle: 'Create a Spences account',
@@ -13,21 +15,23 @@ SignUpPage = AmpersandView.extend({
         form: {
             hook: 'signup-form',
             prepareView: function (el) {
-                var userForm;
+                var self, userForm;
+
+                self = this;
 
                 userForm = new UserForm({
                     el: el,
                     submitCallback: function (formData) {
-                        var me;
+                        var newMe;
 
-                        me = new MeModel();
-                        me.save(formData, {
+                        newMe = new MeModel();
+                        newMe.save(formData, {
                             wait: true,
-                            error: function (me, xhr) {
+                            error: function (newMe, xhr) {
                                 if (xhr.body.error === 'Already Exists') {
                                     if (xhr.body.token) {
-                                        me.set(xhr.body);
-                                        console.log('SUCCESS', me.id);
+                                        newMe.set(xhr.body);
+                                        self.successfulSignup(newMe);
                                         return;
                                     }
 
@@ -38,7 +42,7 @@ SignUpPage = AmpersandView.extend({
                                 console.error('Server error. Show feedback.');
                             },
                             success: function () {
-                                console.log('SUCCESS', me.id);
+                                self.successfulSignup(newMe);
                             }
                         });
                     }
@@ -47,6 +51,12 @@ SignUpPage = AmpersandView.extend({
                 return userForm;
             }
         }
+    },
+
+    successfulSignup: function (newMe) {
+        me(newMe);
+        store.set('token', newMe.token);
+        spences.navigate('expenses');
     }
 });
 
