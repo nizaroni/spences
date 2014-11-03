@@ -1,5 +1,5 @@
 var AmpersandSwitcher, AmpersandView, result,
-    navigate, router, head, body,
+    navigate, router, head, body, me,
     MainView
 ;
 
@@ -11,6 +11,7 @@ navigate = require('../helpers/navigate');
 router = require('../router');
 head = require('../../templates/head.dom');
 body = require('../../templates/body.dom');
+me = require('../helpers/me');
 
 MainView = AmpersandView.extend({
     template: body,
@@ -40,6 +41,11 @@ MainView = AmpersandView.extend({
     },
 
     switchPageView: function (pageView) {
+        if (pageView.authOnly && !me()) {
+            router.redirectTo('');
+            return;
+        }
+
         this.pageSwitcher.set(pageView);
     },
 
