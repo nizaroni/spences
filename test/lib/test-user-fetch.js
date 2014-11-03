@@ -24,6 +24,9 @@ test('userFetch() test', function (t) {
     tasks.saveEmailHash = function saveEmailHash (callback) {
         db.hmset(userKey(alfred.email), alfred, callback);
     };
+    tasks.fetchNonExistent = function fetchNonExistent (callback) {
+        userFetch({ email: 'batman@batmail.com' }, callback);
+    };
     tasks.fetchById = ['saveIdHash', function fetchById (callback) {
         userFetch({ id: alfred.id }, callback);
     }];
@@ -36,6 +39,7 @@ test('userFetch() test', function (t) {
             throw err;
         }
 
+        t.equal(results.fetchNonExistent, null);
         t.deepEqual(results.fetchById, alfred);
         t.deepEqual(results.fetchByEmail, alfred);
 
