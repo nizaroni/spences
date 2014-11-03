@@ -27,6 +27,10 @@
     "IS_DEV": {
       "description": "Boolean value that determines whether app components will run in development mode.",
       "default": "false"
+    },
+    "REDIS_KEY_PREFIX": {
+      "description": "Prefix to use on Redis keys. Useful for testing.",
+      "default": ""
     }
   },
   "license": "ISC",
@@ -36,8 +40,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "tape test/*/*.js",
-    "test-pretty": "tape test/*/*.js | faucet",
+    "test": "REDIS_KEY_PREFIX=test tape test/*/*.js",
+    "test-pretty": "REDIS_KEY_PREFIX=test tape test/*/*.js | faucet",
     "dev": "nodemon server.js"
   }
 }
