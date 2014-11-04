@@ -13,4 +13,8 @@
         </thead>
         <tbody data-hook="expenses-list"></tbody>
     </table>
+
+    <a href="/expenses/add" class="btn btn-primary">
+        Add another expense
+    </a>
 </section>
