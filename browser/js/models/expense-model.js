@@ -48,6 +48,12 @@ ExpenseModel = AmpersandModel.extend({
 
                 return timeParts.join(':');
             }
+        },
+        prettyAmount: {
+            deps: [ 'amount' ],
+            fn: function () {
+                return this.amount / 100;
+            }
         }
     },
 
