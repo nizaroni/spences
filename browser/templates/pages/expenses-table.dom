@@ -1,6 +1,12 @@
 <section class="page expenses">
     <h1>Expenses</h1>
 
+    <form role="form-inline" class="pull-left">
+        <div class="form-group">
+            <input type="text" data-hook="expense-search" class="form-control" placeholder="Search your expenses">
+        </div>
+    </form>
+
     <table class="table table-hover">
         <thead>
             <tr>
