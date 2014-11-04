@@ -1,0 +1,7 @@
+<tr>
+    <td data-hook="date"></td>
+    <td data-hook="time"></td>
+    <td>$<span data-hook="prettyAmount"></span></td>
+    <td data-hook="description"></td>
+    <td data-hook="comments"></td>
+</tr>
