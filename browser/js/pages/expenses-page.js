@@ -1,4 +1,7 @@
-var AmpersandView, expensesCollection, ExpenseItemView, expensesEmpty, expensesTable, ExpensesPage;
+var AmpersandView,
+    expensesCollection, ExpenseItemView, expensesEmpty, expensesTable,
+    ExpensesPage
+;
 
 AmpersandView = require('ampersand-view');
 
