@@ -22,22 +22,28 @@ ExpenseModel = AmpersandModel.extend({
                 var dateParts;
 
                 dateParts = [
-                    this.datetime.getFullYear(),
                     this.datetime.getMonth() + 1,
-                    this.datetime.getDate()
+                    this.datetime.getDate(),
+                    this.datetime.getFullYear()
                 ];
 
-                return dateParts.join('-');
+                return dateParts.join('/');
             }
         },
         time: {
             deps: [ 'datetime' ],
             fn: function () {
-                var timeParts;
+                var timeParts, minutes;
+
+                minutes = this.datetime.getMinutes();
+
+                if (minutes < 10) {
+                    minutes = '0' + minutes;
+                }
 
                 timeParts = [
                     this.datetime.getHours(),
-                    this.datetime.getMinutes()
+                    minutes
                 ];
 
                 return timeParts.join(':');
