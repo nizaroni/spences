@@ -6,6 +6,7 @@ var AmpersandSwitcher, AmpersandView, result,
 AmpersandSwitcher = require('ampersand-view-switcher');
 AmpersandView = require('ampersand-view');
 result = require('lodash.result');
+dom = require('ampersand-dom');
 
 navigate = require('../helpers/navigate');
 router = require('../router');
@@ -41,12 +42,26 @@ MainView = AmpersandView.extend({
     },
 
     switchPageView: function (pageView) {
+        var path;
+
         if (pageView.authOnly && !me()) {
             router.redirectTo('');
             return;
         }
 
         this.pageSwitcher.set(pageView);
+
+        path = window.location.pathname.slice(1);
+
+        this.queryAll('.nav a[href]').forEach(function (link) {
+            var linkPath = link.pathname.slice(1);
+
+            if ((!linkPath && !path) || (linkPath === path)) {
+                dom.addClass(link.parentNode, 'active');
+            } else {
+                dom.removeClass(link.parentNode, 'active');
+            }
+        });
     },
 
     navigateFromLinkEvent: function (event) {
