@@ -47,6 +47,13 @@ Spences.prototype.fetchUser = function (callback) {
 
     token = new TokenModel();
     token.fetch({
+        error: function (token, response) {
+            if (response.statusCode === 401) {
+                store.remove('token');
+            }
+
+            callback();
+        },
         success: function saveMe (token, response) {
             var newMe;
 
