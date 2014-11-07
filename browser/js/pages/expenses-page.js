@@ -32,7 +32,7 @@ ExpensesPage = AmpersandView.extend({
     render: function () {
         this.renderWithTemplate();
         this.renderCollection(expensesCollection, ExpenseItemView, this.queryByHook('expenses-list'));
-        if (!expensesCollection.length) {
+        if (!expensesCollection.filterQuery && !expensesCollection.length) {
             expensesCollection.fetch();
         }
     },
