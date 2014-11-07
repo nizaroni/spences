@@ -1,3 +1,9 @@
 <section class="page expenses-weekly">
     <h1>Weekly Breakdown</h1>
+
+    <form role="form-inline" class="pull-left">
+        <div class="form-group">
+            <input type="text" data-hook="expense-search" class="form-control" placeholder="Search your expenses">
+        </div>
+    </form>
 </section>
