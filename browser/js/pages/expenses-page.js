@@ -29,6 +29,13 @@ ExpensesPage = AmpersandView.extend({
 
     expenses: expensesCollection,
 
+    initialize: function () {
+        expensesCollection.on('add', function () {
+            expensesCollection.filterQuery = null;
+            expensesCollection.allExpenses = null;
+        });
+    },
+
     render: function () {
         this.renderWithTemplate();
         this.renderCollection(expensesCollection, ExpenseItemView, this.queryByHook('expenses-list'));
