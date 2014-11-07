@@ -35,7 +35,8 @@ ExpensesCollection = AmpersandRestCollection.extend({
             this.allExpenses = this.models.slice();
         }
 
-        this.filterQuery = query.toLowerCase();
+        this.filterQuery = query;
+        query = query.toLowerCase();
 
         if (!query) {
             this.set(this.allExpenses);
