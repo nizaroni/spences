@@ -30,9 +30,14 @@ ExpensesPage = AmpersandView.extend({
     expenses: expensesCollection,
 
     initialize: function () {
-        expensesCollection.on('add', function () {
-            expensesCollection.filterQuery = null;
-            expensesCollection.allExpenses = null;
+        var self;
+
+        self = this;
+
+        self.expenses.on('spences-new-expense', function () {
+            self.queryByHook('expense-search').value = '';
+            self.expenses.filterQuery = null;
+            self.expenses.allExpenses = null;
         });
     },
 

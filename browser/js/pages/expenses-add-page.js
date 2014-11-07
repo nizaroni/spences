@@ -40,7 +40,11 @@ ExpensesAddPage = AmpersandView.extend({
                             },
                             success: function (expense, response) {
                                 spences.navigate('expenses');
-                                expensesCollection.fetch();
+                                expensesCollection.fetch({
+                                    success: function () {
+                                        expensesCollection.trigger('spences-new-expense');
+                                    }
+                                });
                             }
                         })
                     }
