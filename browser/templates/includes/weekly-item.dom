@@ -1,0 +1,5 @@
+<tr>
+    <td data-hook="name"></td>
+    <td>$<span data-hook="prettyAmount"></span></td>
+    <td>$<span data-hook="prettyDailyAverage"></span></td>
+</tr>
