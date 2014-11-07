@@ -18,7 +18,7 @@ WeeklyModel = AmpersandState.extend({
                 if (!this.amount || !this.total) {
                     return 0;
                 }
-                return Math.round(this.amount / this.total);
+                return Math.round(this.amount / 7);
             }
         },
 
