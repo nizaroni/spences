@@ -10,6 +10,7 @@
     "ampersand-model": "^4.0.3",
     "ampersand-rest-collection": "^2.0.4",
     "ampersand-router": "^1.0.6",
+    "ampersand-state": "^4.3.14",
     "ampersand-view": "^7.1.4",
     "ampersand-view-switcher": "^1.1.0",
     "domready": "^1.0.7",
