@@ -19,6 +19,16 @@ ExpensesPage = AmpersandView.extend({
         'keyup [data-hook~=expense-search]': 'filterExpenses'
     },
 
+    bindings: {
+        'expenses.filterQuery': {
+            type: 'attribute',
+            name: 'value',
+            hook: 'expense-search'
+        }
+    },
+
+    expenses: expensesCollection,
+
     render: function () {
         this.renderWithTemplate();
         this.renderCollection(expensesCollection, ExpenseItemView, this.queryByHook('expenses-list'));
