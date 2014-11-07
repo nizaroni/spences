@@ -34,14 +34,17 @@ ExpenseForm = AmpersandFormView.extend({
                 size: 'large',
                 parent: this,
                 tests: [
-                    function validatePositive (val) {
-                        if (!+val || +val < 0) {
-                            return 'Please enter an amount greater than zero.';
-                        }
-                    },
                     function validateMoneyFormat (val) {
                         if (!/^\$?[0-9]+(\.[0-9]{2})?$/.test(val)) {
                             return 'Please enter a valid amount of money.';
+                        }
+                    }, function validatePositive (val) {
+                        if (val.indexOf('$') === 0) {
+                            val = val.slice(1);
+                        }
+
+                        if (!+val || +val < 0) {
+                            return 'Please enter an amount greater than zero.';
                         }
                     }
                 ]
