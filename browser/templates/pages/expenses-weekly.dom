@@ -6,4 +6,15 @@
             <input type="text" data-hook="expense-search" class="form-control" placeholder="Search your expenses">
         </div>
     </form>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Total</th>
+                <th>Daily Average</th>
+            </tr>
+        </thead>
+        <tbody data-hook="weekly-list"></tbody>
+    </table>
 </section>
