@@ -7,6 +7,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="/expenses">Expenses</a></li>
+                <li><a href="/expenses/weekly">Weekly Breakdown</a></li>
             </ul>
         </div>
     </nav>
